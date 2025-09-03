@@ -1,5 +1,7 @@
-#or a given natural number n find the minimal natural number m formed with the same digits.
-# (e.g. n=3658, m=3568).
+"""
+For a given natural number n find the minimal natural number m formed with the same digits.
+(e.g. n=3658, m=3568).
+"""
 
 def number_into_list(n):
     digit = []
