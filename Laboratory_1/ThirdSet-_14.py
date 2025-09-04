@@ -16,7 +16,6 @@ def prime(num):
         d += 2
     return True
 
-
 def prime_divisors(n, pos):
     d = 2
     while n != 1:
