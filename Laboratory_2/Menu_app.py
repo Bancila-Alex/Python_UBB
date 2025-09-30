@@ -20,53 +20,54 @@ def binary_search(x, array):
     return -1
 
 def print_the_step_list(array, step):
-    if step % 10 == 1 and step != 11:
+    if step % 10 == 1 and step % 100 != 11:
         print(f"{step}'st step: {array}")
-    elif step %  10 == 2 and step != 12:
+    elif step %  10 == 2 and step % 100 != 12:
         print(f"{step}'nd step: {array}")
-    elif step % 10 == 3 and step != 13:
+    elif step % 10 == 3 and step % 100 != 13:
         print(f"{step}'rd step: {array}")
     else:
         print(f"{step}'th step:  {array}")
 
 def bubble_sort(array, given_step):
-    # I will consider the step to be a loop in the while
+    # I will consider the step to be the swap
     sorted_for_bubble = False
     step = 0
     while not sorted_for_bubble:
-        step += 1
         sorted_for_bubble = True
         for i in range(len(array) - 1):
             if array[i] > array[i + 1]:
+                step += 1
                 array[i], array[i + 1] = array[i + 1], array[i]
                 sorted_for_bubble = False
-        if step % given_step == 0:
-            print_the_step_list(array, step)
+            if step % given_step == 0:
+                print_the_step_list(array, step)
     return array
 
-def heapify(array, n, i):
+def heapify(array, n, i, step, given_step):
     largest = i
     if i * 2 + 1 < n  and array[i * 2 + 1] > array[largest]:
         largest = i * 2 + 1
     if i * 2 + 2 < n and array[i * 2 + 2] > array[largest]:
         largest = i * 2 + 2
     if largest != i:
+        step += 1
         array[i], array[largest] = array[largest], array[i]
-        heapify(array, n, largest)
+        if step % given_step == 0:
+            print_the_step_list(array, step)
+        heapify(array, n, largest, step, given_step)
+    return step
 
 def heap_sort(array, given_step):
-    # I will consider the step to be a heapify
+    # I will consider the step to be the swap
     n = len(array)
     step = 0
     for i in range(n // 2 - 1, -1 , -1):
-        heapify(array, n, i)
-        step += 1
-        if step % given_step == 0:
-            print_the_step_list(array, step)
+        step = heapify(array, n, i, step, given_step)
     for i in range(n - 1, 0, -1):
         step += 1
         array[0], array[i] = array[i], array[0]
-        heapify(array, i, 0)
+        step = heapify(array, i, 0, step, given_step)
         if step % given_step == 0:
             print_the_step_list(array, step)
     return array
