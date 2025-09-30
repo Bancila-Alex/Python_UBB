@@ -1,4 +1,4 @@
-# 💻 Assignment 02 - Searching. Sorting
+x# 💻 Assignment 02 - Searching. Sorting
 
 ## Requirements
 Implement a menu-driven console application to help visualize the way searching and sorting algorithms work. You will be given one search algorithm and two sorting algorithms from the list below to implement (one from each of the three sets). When started, the program will print a menu with the following options:
